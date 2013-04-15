@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="txtRequestHeader.Text" xml:space="preserve">
+    <value>Accept: */*
+Referer: https://ui.ptlogin2.qq.com/cgi-bin/login?target=self&amp;style=5&amp;mibao_css=m_webqq&amp;appid=1003903&amp;enable_qlogin=0&amp;no_verifyimg=1&amp;s_url=http%3A%2F%2Fweb2.qq.com%2Floginproxy.html&amp;f_url=loginerroralert&amp;strong_login=1&amp;login_state=10&amp;t=20130221001
+Accept-Language: zh-CN
+User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; qdesk 2.4.1263.203; QQDownload 718; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; Creative AutoUpdate v1.41.07)
+Accept-Encoding: gzip, deflate
+Host: ssl.ptlogin2.qq.com
+Connection: Keep-Alive
+Cookie: ptcz=4809728e82984100609f49eb316f47b2e1dbcb319264886459514ea9ad273180; uikey=051cf97dca86768d87edaecb3a7b10c664e8cd14440ff4dcf8c8b1d20a4c3e54; chkuin=2641271568; confirmuin=2641271568; ptvfsession=bcc2ba810cb99e37ce4c3c777aa1acad7487afdb5da67c7458dcdec35fd6216266583c5f5ab502eef19d6ded5841ce5b; pgv_info=ssid=s2491468368&amp;pgvReferrer=; verifysession=h008f250debcef445bb17aed1848684109a8934cd5e2fa6bf2efe38508df4400441a858ff17d18f3aa6ca356e0d65b172d7; ac=1,030,017; uin_cookie=2641271568; euin_cookie=DE4160DA5DC0BC38655AAF7792A750144C0BEF555CE93879; pt2gguin=o2641271568; RK=zsDHIXLO2L; pgv_pvid=4237255536; o_cookie=2641271568; pgv_flv=10.0; pgv_r_cookie=1341096867928; ptisp=ctc
+</value>
+  </data>
+  <data name="txtUrl.Text" xml:space="preserve">
+    <value>https://ssl.ptlogin2.qq.com/login?u=2641271568&amp;p=65E69D896486251F284E19012664DDD2&amp;verifycode=!LOS&amp;webqq_type=10&amp;remember_uin=1&amp;login2qq=1&amp;aid=1003903&amp;u1=http%3A%2F%2Fweb2.qq.com%2Floginproxy.html%3Flogin2qq%3D1%26webqq_type%3D10&amp;h=1&amp;ptredirect=0&amp;ptlang=2052&amp;from_ui=1&amp;pttype=1&amp;dumy=&amp;fp=loginerroralert&amp;action=7-23-28844&amp;mibao_css=m_webqq&amp;t=1&amp;g=1&amp;js_type=0&amp;js_ver=10027&amp;login_sig=1odFatIBVvCgAz1k8H0*owWGw2uSpUdVPwMP31d1gI*VKR2EQNFzVzwww0NvYDdV</value>
+  </data>
+  <data name="txtGetVCodeRequestHeader.Text" xml:space="preserve">
+    <value>Accept: */*
+Referer: https://ui.ptlogin2.qq.com/cgi-bin/login?target=self&amp;style=5&amp;mibao_css=m_webqq&amp;appid=1003903&amp;enable_qlogin=0&amp;no_verifyimg=1&amp;s_url=http%3A%2F%2Fweb2.qq.com%2Floginproxy.html&amp;f_url=loginerroralert&amp;strong_login=1&amp;login_state=10&amp;t=20130221001
+Accept-Language: zh-CN
+User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; qdesk 2.4.1263.203; QQDownload 718; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; Creative AutoUpdate v1.41.07)
+Accept-Encoding: gzip, deflate
+Host: ssl.ptlogin2.qq.com
+Connection: Keep-Alive
+Cookie: ptcz=4809728e82984100609f49eb316f47b2e1dbcb319264886459514ea9ad273180; uikey=7cc1e7daf288a014a70d7416d4e0f2873ee96ed36aedc21287e73e1924573617; chkuin=2641271568; uin_cookie=138001655; euin_cookie=3959D719B9896C53A8EF410257BA2E1B46D32C41C4836AEC; ac=1,030,017; pgv_pvid=7166157372; pgv_info=pgvReferrer=&amp;ssid=s3577789138</value>
+  </data>
+  <data name="txtGetVCodeRequestUrl.Text" xml:space="preserve">
+    <value>https://ssl.ptlogin2.qq.com/check?uin={0}&amp;appid=1003903&amp;js_ver=10027&amp;js_type=0&amp;login_sig=neKJp*sYOiqrO*as2shfARr3Yp2es9co5x6hJwZc-cGW2I4tnXKC6ZmGXQ-JECas&amp;u1=http%3A%2F%2Fweb2.qq.com%2Floginproxy.html&amp;r={1}</value>
+  </data>
+</root>

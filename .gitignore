@@ -1,0 +1,9 @@
+/QQRobot.sdf
+/Debug
+/dep
+/Release
+/NetService/Release
+/NetService/Debug
+/HttpCommunicator/obj
+/HttpCommunicator/bin
+/*.wps
