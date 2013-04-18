@@ -10,9 +10,30 @@ int main(int argc, char* argv[])
     boost::asio::io_service io_service;
     HttpConnection conn(io_service);
 
-    HttpConnectionHandler connectionHandler;
-    //conn.connect_Async<HttpConnectionHandler>("www.google.com", connectionHandler);
-    conn.connect("www.google.com");
+    HttpConnectionHandler handler;
+    //conn.connect_Async<HttpConnectionHandler>("www.baidu.com", handler);
+    conn.connect<HttpConnectionHandler>("www.baidu.com", handler);
+
+    string str;
+    str.append("GET /index.php HTTP/1.1\r\n");
+    str.append("Accept: */*\r\n");
+    str.append("Accept-Language: zh-CN\r\n");
+    str.append("User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; qdesk 2.4.1263.203; QQDownload 718; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; Creative AutoUpdate v1.41.07)\r\n");
+    str.append("Accept-Encoding: gzip, deflate\r\n");
+    str.append("Host: www.baidu.com\r\n");
+    str.append("Connection: Keep-Alive\r\n\r\n");
+
+    size_t len = conn.write<HttpConnectionHandler>((byte*)str.c_str(), 1024, handler);
+    if (len > 0)
+    {
+        cout << "sent = " << len << endl;
+        byte buff[1024] = {0};
+        size_t rlen = conn.read<HttpConnectionHandler>(buff, 1024, handler);
+        cout << "recv = " << rlen << endl;
+        cout << "data = " << buff << endl;
+    }
+    //conn.connect("www.google.com");
+    //conn.write_Async<HttpConnectionHandler>((byte*)"aaa", 3, handler);
 
     /*boost::asio::io_service io_service;
 

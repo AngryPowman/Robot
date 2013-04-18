@@ -1,20 +1,18 @@
 #ifndef HTTP_CONNECTION_H_
 #define HTTP_CONNECTION_H_
 
-#include <boost/shared_ptr.hpp>
-#include <boost/enable_shared_from_this.hpp>
 #include <boost/asio.hpp>
 #include <boost/bind.hpp>
 #include <boost/function.hpp>
 #include "Common.h"
+#include "TCPConnection.hpp"
 
 using namespace boost::asio;
 
 typedef boost::function<void (const boost::system::error_code&,
     boost::asio::ip::tcp::resolver::iterator)> AsyncConnectCallback;
 
-class HttpConnection
-    : public boost::enable_shared_from_this<HttpConnection>, public boost::noncopyable
+class HttpConnection : public TCPConnection
 {
     enum CALL_METHOD { SYNCHRONIZATION, ASYNCHRONOUS };
 
@@ -32,6 +30,34 @@ public:
 
 public:
     /*Asynchronous Methods*/
+    /*
+    template <typename Handler> bool connect(const std::string& host, Handler& handler) {}
+    template <typename Handler> bool connect_Async(const std::string& host, Handler& handler) {}
+    template <typename Handler> void write(byte* data, size_t len, Handler& handler) {}
+    template <typename Handler> void write_Async(byte* data, size_t len, Handler& handler) {}
+    template <typename Handler> void read(byte* data, size_t len, Handler& handler) {}
+    template <typename Handler> void read_Async(byte* data, size_t len, Handler& handler) {}
+    */
+
+    template <typename Handler> bool connect(const std::string& host, Handler& handler) 
+    {
+        if (isConnected() == true)
+        {
+            return false;
+        }
+
+        resolverHost(host);
+        _socket.connect(_endpoint, _error);
+
+        if (_error)
+        {
+            cout << _error.message() << endl;
+            return false;
+        }
+
+        return true;
+    }
+
     template <typename Handler> bool connect_Async(const std::string& host, Handler& handler, int32 timeout = 5000)
     {
         if (isConnected() == true)
@@ -52,50 +78,64 @@ public:
         _socket.get_io_service().run();
         return true;
     }
-    template <typename Handler> bool startWrite_Async();
-    template <typename Handler> bool startRead_Async();
 
+    template <typename Handler> size_t write(byte* data, size_t len, Handler& handler) 
+    {
+        size_t transferredLen = _socket.send(boost::asio::buffer(data, len), 0, _error);
+        return transferredLen;
+    }
 
-    /*Synchronized Methods*/
-    bool connect(const std::string& host)
+    template <typename Handler> void write_Async(byte* data, int32 len, Handler& handler, int32 timeout = 5000)
+    {
+        _socket.get_io_service().reset();
+        _deadLineTimer.expires_from_now(boost::posix_time::milliseconds(timeout));
+        boost::asio::async_write(
+            _socket,
+            boost::asio::buffer(data, len), 
+            boost::asio::transfer_all(),
+            boost::bind(
+                &Handler::onWriteCompleted, handler, 
+                boost::asio::placeholders::error, 
+                boost::asio::placeholders::bytes_transferred)
+        );
+
+        _socket.get_io_service().run();
+    }
+
+    template <typename Handler> size_t read(byte* data, size_t len, Handler& handler)
+    {
+        size_t recvLen = _socket.receive(boost::asio::buffer(data, len), 0, _error);
+        return recvLen;
+    }
+
+    template <typename Handler> void read_Async(Handler& handler, int32 timeout = 5000)
     {
         if (isConnected() == true)
         {
             return false;
         }
 
-        resolverHost(host);
-        const boost::system::error_code& err = _socket.connect(_endpoint, _error);
-        if (err)
-        {
-            cout << err.message() << endl;
-            return false;
-        }
-
-        return true;
-    }
-
-
-
-private:
-    void resolverHost(const std::string& host)
-    {
         _socket.get_io_service().reset();
-        _error.assign(0, boost::system::get_system_category());
+        _deadLineTimer.expires_from_now(boost::posix_time::milliseconds(timeout));
+        boost::asio::async_read(
+            _socket,
+            boost::asio::buffer(data, len), 
+            boost::asio::transfer_all(),
+            boost::bind(
+            &Handler::onWriteCompleted, handler, 
+            boost::asio::placeholders::error, 
+            boost::asio::placeholders::bytes_transferred)
+            );
 
-        boost::asio::ip::tcp::resolver resolver(_io_service);
-        boost::asio::ip::tcp::resolver::query query(host, "80");
-        _endpoint_iterator = resolver.resolve(query);
-        _endpoint = *_endpoint_iterator;
+        _socket.get_io_service().run();
     }
 
+
+public:
     const boost::system::error_code& errorCode() const
     {
         return _error;
     }
-
-protected:
-    const boost::asio::ip::tcp::endpoint& getEndpoint() const;
 
     bool isConnected()
     {
@@ -108,33 +148,22 @@ protected:
         _isConnected = false;
     }
 
-
-public:
-    /*void onConnected(const boost::system::error_code& error,
-        boost::asio::ip::tcp::resolver::iterator endpoint_iter)
+private:
+    void _onWrite(const boost::system::error_code& error, std::size_t bytes_transferred)
     {
-        if (error)
-        {
-            cout << "Connection exception, erorr = " << error << endl;
-            close();
-            return;
-        }
 
-        _isConnected = true;
-        cout << "Connected to " 
-            << endpoint_iter->host_name() << ":" << endpoint_iter->endpoint().port()
-            << endl;
     }
 
-    void onConnectionTimeout()
+    void resolverHost(const std::string& host)
     {
-        if (isConnected() == true)
-        {
-            return;
-        }
+        _socket.get_io_service().reset();
+        _error.assign(0, boost::system::get_system_category());
 
-        cout << "connection timeout." << endl;
-    }*/
+        boost::asio::ip::tcp::resolver resolver(_io_service);
+        boost::asio::ip::tcp::resolver::query query(host, "80");
+        _endpoint_iterator = resolver.resolve(query);
+        _endpoint = *_endpoint_iterator;
+    }
 
 private:
     bool _isConnected;

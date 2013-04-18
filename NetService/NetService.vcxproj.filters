@@ -36,5 +36,8 @@
     <ClInclude Include="HttpConnection.hpp">
       <Filter>Http</Filter>
     </ClInclude>
+    <ClInclude Include="TCPConnection.hpp">
+      <Filter>Http</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

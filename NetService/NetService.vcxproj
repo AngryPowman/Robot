@@ -90,6 +90,7 @@
     <ClInclude Include="HttpRequester.h" />
     <ClInclude Include="ISocketHandler.h" />
     <ClInclude Include="local_free_on_destruction.hpp" />
+    <ClInclude Include="TCPConnection.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
