@@ -8,16 +8,12 @@
 class ISocketHandler
 {
 protected:
-    virtual void onConnected(const boost::system::error_code& error,
+    virtual void onConnection(const boost::system::error_code& error,
         boost::asio::ip::tcp::resolver::iterator endpoint_iter) = 0;
 
-    virtual void onConnectionTimeout() = 0;
+    virtual void onWrite(const boost::system::error_code& error, std::size_t bytes_transferred, byte* data) = 0;
 
-    // write data
-    virtual void onWriteCompleted(const boost::system::error_code& error, std::size_t bytes_transferred) = 0;
-
-    // read data
-    //virtual void onRead() = 0;
+    virtual void onRead(const boost::system::error_code& error, std::size_t bytes_transferred) = 0;
 };
 
 #endif

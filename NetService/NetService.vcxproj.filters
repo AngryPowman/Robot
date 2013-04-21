@@ -5,6 +5,9 @@
     <ClCompile Include="error_code.cpp">
       <Filter>Boost</Filter>
     </ClCompile>
+    <ClCompile Include="HttpRequester.cpp">
+      <Filter>Http</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">
@@ -27,16 +30,19 @@
     <ClInclude Include="ISocketHandler.h">
       <Filter>Http</Filter>
     </ClInclude>
-    <ClInclude Include="HttpConnectionHandler.h">
+    <ClInclude Include="HttpConnection.hpp">
+      <Filter>Http</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPConnection.hpp">
       <Filter>Http</Filter>
     </ClInclude>
     <ClInclude Include="HttpRequester.h">
       <Filter>Http</Filter>
     </ClInclude>
-    <ClInclude Include="HttpConnection.hpp">
+    <ClInclude Include="HttpRequestHeader.h">
       <Filter>Http</Filter>
     </ClInclude>
-    <ClInclude Include="TCPConnection.hpp">
+    <ClInclude Include="HeaderCollection.hpp">
       <Filter>Http</Filter>
     </ClInclude>
   </ItemGroup>

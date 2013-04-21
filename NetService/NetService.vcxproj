@@ -81,13 +81,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="error_code.cpp" />
+    <ClCompile Include="HttpRequester.cpp" />
     <ClCompile Include="NetService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />
+    <ClInclude Include="HeaderCollection.hpp" />
     <ClInclude Include="HttpConnection.hpp" />
-    <ClInclude Include="HttpConnectionHandler.h" />
     <ClInclude Include="HttpRequester.h" />
+    <ClInclude Include="HttpRequestHeader.h" />
     <ClInclude Include="ISocketHandler.h" />
     <ClInclude Include="local_free_on_destruction.hpp" />
     <ClInclude Include="TCPConnection.hpp" />
